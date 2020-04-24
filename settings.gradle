@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':video_player_android_library'
 rootProject.name='VideoPlayerAndroid'
