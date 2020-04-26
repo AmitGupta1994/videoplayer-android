@@ -80,8 +80,7 @@ class CustomVideoPlayer @JvmOverloads constructor(
             play_pause,
             skip_next,
             fullscreen,
-            share,
-            camera
+            share
         ).forEach { it.setOnClickListener(this) }
 
         listOf(video_view, controller, error_controller).forEach { it.setOnTouchListener(this) }
@@ -147,9 +146,6 @@ class CustomVideoPlayer @JvmOverloads constructor(
             }
             R.id.share -> {
                 openShareImageDialog(screenShotImageUrl)
-            }
-            R.id.camera -> {
-                screenShotImageUrl = video_view.takeScreenshot()
             }
         }
 
