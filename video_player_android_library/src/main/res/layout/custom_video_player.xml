@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/player_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Above the videoview-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/controller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:paddingBottom="8dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/video_name"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Video Name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/skip_previous"
+            android:layout_width="@dimen/controller_item_width"
+            android:layout_height="@dimen/controller_item_height"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_skip_previous_white_24dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/play_pause"
+            android:layout_width="@dimen/controller_item_width"
+            android:layout_height="@dimen/controller_item_height"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_pause_white_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/skip_previous" />
+
+        <ImageView
+            android:id="@+id/skip_next"
+            android:layout_width="@dimen/controller_item_width"
+            android:layout_height="@dimen/controller_item_height"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_skip_next_white_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/play_pause" />
+
+        <TextView
+            android:id="@+id/current_duration"
+            style="@style/TextViewStyleWithNoMarginPadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/skip_next" />
+
+        <TextView
+            android:id="@+id/slash"
+            style="@style/TextViewStyleWithNoMarginPadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/total_duration"
+            app:layout_constraintStart_toEndOf="@id/current_duration" />
+
+        <TextView
+            android:id="@+id/total_duration"
+            style="@style/TextViewStyleWithNoMarginPadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--:--"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/slash" />
+
+        <ImageView
+            android:id="@+id/fullscreen"
+            android:layout_width="@dimen/controller_item_width"
+            android:layout_height="@dimen/controller_item_height"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_fullscreen_white_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <SeekBar
+            android:id="@+id/seek_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/fullscreen"
+            app:layout_constraintStart_toEndOf="@id/total_duration" />
+
+        <ImageView
+            android:id="@+id/share"
+            android:layout_width="@dimen/controller_item_width"
+            android:layout_height="@dimen/controller_item_height"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_share_white_24dp"
+            app:layout_constraintEnd_toStartOf="@id/camera"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/camera"
+            android:layout_width="@dimen/controller_item_width"
+            android:layout_height="@dimen/controller_item_height"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_camera_alt_white_24dp"
+            app:layout_constraintEnd_toStartOf="@id/fullscreen"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/error_controller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BB000000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/error_msg"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/error_msg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/tap_to_retry"
+            app:layout_constraintStart_toStartOf="@id/error_msg"
+            app:layout_constraintTop_toBottomOf="@id/error_msg" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/video_view"
+        app:layout_constraintLeft_toLeftOf="@id/video_view"
+        app:layout_constraintRight_toRightOf="@id/video_view"
+        app:layout_constraintTop_toTopOf="@id/video_view" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

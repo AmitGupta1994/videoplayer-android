@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="android:windowActionBar">false</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+    </style>
+
+    <style name="TextViewStyle">
+        <item name="android:layout_marginLeft">@dimen/textview_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/textview_margin_right</item>
+        <item name="android:layout_marginTop">@dimen/textview_margin_top</item>
+        <item name="android:textColor">@color/textColor_white</item>
+        <!--<item name="android:fontFamily">@font/biosansregular</item>-->
+        <item name="android:textSize">@dimen/textview_text_size_18</item>
+    </style>
+
+    <style name="TextViewStyleWithNoMarginPadding">
+        <item name="android:textColor">@color/textColor_white</item>
+        <item name="android:textSize">@dimen/textview_text_size_18</item>
+    </style>
+</resources>
