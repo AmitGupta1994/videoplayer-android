@@ -35,7 +35,7 @@ class CustomVideoPlayer @JvmOverloads constructor(
     lateinit var playState: PlayState
     lateinit var playType: PlayType
 
-    lateinit var screenShotImageUrl:String
+    lateinit var screenShotImageUrl: String
     /**
      * [LOCAL] for videos in memory, [REMOTE] for videos in Server(Live Streaming)
      */
@@ -107,7 +107,7 @@ class CustomVideoPlayer @JvmOverloads constructor(
                     seekBar: SeekBar, progress: Int,
                     fromUser: Boolean
                 ) {
-                    Log.d("","seekbar onProgressChanged")
+                    Log.d("", "seekbar onProgressChanged")
                     current_duration.text = TimeUtil.formatMillisToHH_MM(progress)
 //                    video_view.seekTo(seekBar.progress)
 //                    playState = PlayState.PAUSE
@@ -436,7 +436,6 @@ class CustomVideoPlayer @JvmOverloads constructor(
     }
 
 
-
     fun setVideoData(video: Video) {
         this.video = video
         video_view.setVideoURI(Uri.parse(this.video.videoUrl))
@@ -475,7 +474,7 @@ class CustomVideoPlayer @JvmOverloads constructor(
         showProgressForBuffering()
         //Cancel the Previos Task
 //        updateControllerTimerTask.cancelTask()
-        updateControllerTimerTask.scheduleTask(UpdateControllerTimerTask(),1000, 1000)
+        updateControllerTimerTask.scheduleTask(UpdateControllerTimerTask(), 1000, 1000)
 //        restartTrickplayTimer()
 //        updateSeekbarAndCurrentDuration()
     }
@@ -485,11 +484,11 @@ class CustomVideoPlayer @JvmOverloads constructor(
     }
 
     private fun showProgressForBuffering() {
-        Log.d(TAG,"showbufferprogress")
+        Log.d(TAG, "showbufferprogress")
         // TO SHOW PROGRESSBAR WHEN BUFFERING(CHECK OLD AND NEW DURATION)
         if (progressBarRunnable == null) {
             progressBarRunnable = Runnable {
-                Log.d(TAG,"bufferchecking")
+                Log.d(TAG, "bufferchecking")
                 val duration = video_view.currentPosition
                 if (oldDuration == duration && playState == PlayState.PLAYING) {
                     progress_bar.show()
@@ -505,10 +504,10 @@ class CustomVideoPlayer @JvmOverloads constructor(
     }
 
     fun updateSeekbarAndCurrentDuration() {
-        Log.d(TAG,"updateseekbar")
+        Log.d(TAG, "updateseekbar")
         if (seekBarRunnable == null) {
             seekBarRunnable = Runnable {
-                Log.d(TAG,"updateseekbarrunnable")
+                Log.d(TAG, "updateseekbarrunnable")
                 val currentDuration = video_view.currentPosition
                 current_duration.text = TimeUtil.formatMillisToHH_MM(currentDuration)
                 seek_bar.progress = currentDuration
@@ -523,15 +522,15 @@ class CustomVideoPlayer @JvmOverloads constructor(
     private inner class UpdateSeekbarTask : TimerTask() {
         override fun run() {
             controllerAndSeekbarHandler.post(Runnable {
-                val currentPos = video_view.getCurrentPosition()
+                val currentPos = video_view.currentPosition
                 updateSeekbar(currentPos)
             })
         }
     }
 
     private fun updateSeekbar(videoPosition: Int) {
-        seek_bar.setProgress(videoPosition)
-        current_duration.setText(TimeUtil.formatMillisToHH_MM(videoPosition))
+        seek_bar.progress = videoPosition
+        current_duration.text = TimeUtil.formatMillisToHH_MM(videoPosition)
     }
 
     //TO update seekbar,starttime and endtime
@@ -578,8 +577,8 @@ class CustomVideoPlayer @JvmOverloads constructor(
     private inner class UpdateControllerTimerTask : BaseTimerTask() {
         override fun run() {
             runTask {
-                Log.d(TAG,"UpdateControllerTimerTask")
-                val currentPos = video_view.getCurrentPosition()
+                Log.d(TAG, "UpdateControllerTimerTask")
+                val currentPos = video_view.currentPosition
                 updateSeekbar(currentPos)
             }
 
