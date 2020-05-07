@@ -14,7 +14,7 @@
 
         <activity android:name=".VideoPlayerUsageActivity"
             android:configChanges="orientation|screenSize">
-            android:configChanges="orientation|screenSize"
+<!--            android:configChanges="orientation|screenSize"-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
