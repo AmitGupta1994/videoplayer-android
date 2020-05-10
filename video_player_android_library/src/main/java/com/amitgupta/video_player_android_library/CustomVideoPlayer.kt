@@ -98,8 +98,8 @@ class CustomVideoPlayer @JvmOverloads constructor(
                 }
 
                 override fun onStartTrackingTouch(seekBar: SeekBar) {
-//                    stopTrickplayTimer()
-//                    video_view.pause()
+                    stopTrickplayTimer()
+                    video_view.pause()
 //                    stopControllersTimer()
                 }
 
@@ -109,9 +109,9 @@ class CustomVideoPlayer @JvmOverloads constructor(
                 ) {
                     Log.d("", "seekbar onProgressChanged")
                     current_duration.text = TimeUtil.formatMillisToHH_MM(progress)
-//                    video_view.seekTo(seekBar.progress)
-//                    playState = PlayState.PAUSE
-//                    updatePlayState(playState)
+                    video_view.seekTo(seekBar.progress)
+                    playState = PlayState.PAUSE
+                    updatePlayState(playState)
                 }
             })
 
