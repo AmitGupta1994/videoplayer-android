@@ -546,21 +546,21 @@ class CustomVideoPlayer @JvmOverloads constructor(
         }
     }
 
-    fun startWithAutoPlay() {
-
-    }
-
-    fun setControllerForLive() {
-
-    }
-
-    fun setControllerForRecorded() {
-
-    }
-
-    fun clear() {
-
-    }
+//    fun startWithAutoPlay() {
+//
+//    }
+//
+//    fun setControllerForLive() {
+//
+//    }
+//
+//    fun setControllerForRecorded() {
+//
+//    }
+//
+//    fun clear() {
+//
+//    }
 
     fun pauseVideo() {
         playState = PlayState.PAUSE
